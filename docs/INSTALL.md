@@ -16,6 +16,18 @@ python setup.py develop
 
 ## Set API keys
 V-IRL relies on Google Map Platform
+
+Option 1: Use a `.env` file (recommended)
+```shell
+# in the project root (same level as tools/)
+cat > .env <<'EOF'
+GOOGLE_MAP_API_KEY=YOUR_API_KEY
+OPENAI_API_KEY=YOUR_API_KEY
+SERPAPI_API_KEY=YOUR_API_KEY # optional, used in estate agent vivek only
+EOF
+```
+
+Option 2: Export in your shell profile
 ```shell
 export GOOGLE_MAP_API_KEY="YOUR_API_KEY"
 export OPENAI_API_KEY="YOUR_API_KEY"

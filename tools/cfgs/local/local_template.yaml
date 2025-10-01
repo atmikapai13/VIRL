@@ -1,4 +1,4 @@
-_BASE_CONFIG_: cfgs/base_configs/default.yaml
+_BASE_CONFIG_: tools/cfgs/base_configs/default.yaml
 
 TASK: Local
 INIT_HEADING: 0
@@ -14,7 +14,7 @@ AGENT:
 PIPELINE:
   QUESTION_TO_PLACE:
     PROMPT: QUESTION_TO_PLACE_TEMPLATE
-    MODEL: gpt-4-1106-preview # gpt-4-0613
+    MODEL: gpt-4o-mini # previously gpt-4-1106-preview
     RADIUS: 2000
 
   ROUTE:
@@ -27,7 +27,7 @@ PIPELINE:
 
     # for llm_select manner
     PROMPT: SELECT_LANDMARKS_TEMPLATE
-    MODEL: gpt-4-1106-preview # gpt-4-0613
+    MODEL: gpt-4o # previously gpt-4-1106-preview
 
     # for reviews_select manner
     MIN_REVIEWS: 10
@@ -35,7 +35,7 @@ PIPELINE:
   MILESTONE_INFO:
     SINGLE_PROMPT: SINGLE_INTERSECTION_GIVEN_DIRECTION_TEMPLATE
     ALL_INFO_PROMPT: LANGUAGE_INSTRUCTION_NAVIGATION_GIVEN_DIRECTION_TEMPLATE
-    MODEL: gpt-4-1106-preview # gpt-4-0613
+    MODEL: gpt-4o # previously gpt-4-1106-preview
 
   OUTPUT:
     ROUTE_PATH: plan_trajectory.html

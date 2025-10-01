@@ -1,20 +1,28 @@
-from langchain.agents import load_tools
+from langchain_community.agent_toolkits.load_tools import load_tools
 from langchain.agents import initialize_agent
-from langchain.chat_models import ChatOpenAI
+from langchain_community.chat_models import ChatOpenAI
 
 from virl.config import cfg
 from virl.utils.common_utils import print_prompt, print_answer, parse_answer_to_json
 from .gpt_chat import GPTChat
-from .azure_gpt import AzureGPTChat
+
+# Guard Azure import so non-Azure users don't fail at import time
+try:
+    from .azure_gpt import AzureGPTChat  # requires Azure credentials at import
+except Exception:
+    AzureGPTChat = None
 
 
 __all__ = {
     'GPT': GPTChat,
-    'AzureGPT': AzureGPTChat,
 }
+if AzureGPTChat is not None:
+    __all__['AzureGPT'] = AzureGPTChat
 
 
 def build_chatbot(name):
+    if name not in __all__:
+        raise KeyError(f"Chatbot '{name}' is not available. Ensure required deps/credentials are set.")
     return __all__[name](cfg)
 
 

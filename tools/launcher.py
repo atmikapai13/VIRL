@@ -1,4 +1,10 @@
 import _init_path
+import os
+from pathlib import Path
+try:
+    from dotenv import load_dotenv
+except Exception:
+    load_dotenv = None
 import argparse
 
 from pathlib import Path
@@ -10,6 +16,11 @@ from tasks import build_task_solver
 
 
 def main():
+    # Load .env if available
+    if load_dotenv is not None:
+        env_path = Path(__file__).resolve().parents[1] / '.env'
+        if env_path.exists():
+            load_dotenv(dotenv_path=str(env_path), override=False)
     args, cfg = parse_config()
     logger = common_utils.create_logger(log_file=None)
     log_config_to_file(cfg, logger=logger)

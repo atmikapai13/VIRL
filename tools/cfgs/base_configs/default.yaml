@@ -23,7 +23,7 @@ AZURE_GPT:
   RETRY_TIME: 10
 
 LLM:
-  NAMES: [GPT, AzureGPT]
+  NAMES: [GPT]
   DEFAULT: GPT
 
 
@@ -49,7 +49,7 @@ VISION_MODELS:
   NAME_LIST: ["CLIP", "EvaCLIP", "LLaVA"]
 
   CLIP:
-    SERVER: http://xxx.xxx.xxx.xxx:xxxx
+    SERVER: http://127.0.0.1:22411
   
   EvaCLIP:
     MODEL_NAME: EVA02-CLIP-bigE-14-plus

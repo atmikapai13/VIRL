@@ -21,3 +21,5 @@ temp_files/*
 *.editorconfig
 *.vscode
 data/benchmark/*
+.env
+.env.*
